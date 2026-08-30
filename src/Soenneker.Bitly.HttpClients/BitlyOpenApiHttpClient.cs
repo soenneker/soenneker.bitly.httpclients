@@ -11,7 +11,6 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Bitly.HttpClients;
 
-///<inheritdoc cref="IBitlyOpenApiHttpClient"/>
 public sealed class BitlyOpenApiHttpClient : IBitlyOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
@@ -45,18 +44,11 @@ public sealed class BitlyOpenApiHttpClient : IBitlyOpenApiHttpClient
         }, cancellationToken);
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
         _httpClientCache.RemoveSync(nameof(BitlyOpenApiHttpClient));
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _httpClientCache.Remove(nameof(BitlyOpenApiHttpClient));
