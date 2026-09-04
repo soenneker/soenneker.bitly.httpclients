@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Bitly.HttpClients;
 
+/// <inheritdoc cref="IBitlyOpenApiHttpClient" />
 public sealed class BitlyOpenApiHttpClient : IBitlyOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
