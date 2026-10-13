@@ -29,7 +29,7 @@ public sealed class BitlyOpenApiHttpClient : IBitlyOpenApiHttpClient
     {
         return _httpClientCache.Get(nameof(BitlyOpenApiHttpClient), (config: _config, baseUrl: _config["Bitly:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Bitly:ApiKey");
+            var apiKey = state.config.GetStringStrict("Bitly:ApiKey");
             string authHeaderName = state.config["Bitly:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Bitly:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
